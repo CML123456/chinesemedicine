@@ -1,12 +1,37 @@
 <template>
-	<view class="content">
-		<view class="" v-for="item in Detail" :key="item.id">
-			<image v-if="item.imgUrl" :src="item.imgUrl" mode=""></image>
-			<view class="">{{ item.name }}</view>
+	<view class="">
+		<view class="search">
+			<u-search shape="round" :show-action="false" :disabled="true" @click="goSearch()"></u-search>
 		</view>
-		<view class="text-area">
-			<text class="title">{{title}}</text>
-			<u-button text="月落" @click="gettest"></u-button>
+		<view class="swiper">
+			<u-swiper 
+			:list="list" 
+			mode="dot"  
+			indicator
+            indicatorMode="dot"
+            circular
+			keyName="image" 
+			:effect3d="true" 
+			radius="5"
+			previousMargin="10"
+			nextMargin="10"
+			autoplay>
+			</u-swiper>
+		</view>
+		<view class="physical-therapy">
+			<view class="therapy" v-for="item in 10" :key="item">
+				<image src="../../static/logo.png" class="img" mode=""></image>
+				<view class="text">针灸</view>
+			</view>
+		</view>
+		<view class="famous-doctor">
+			<view class="doctor" v-for="item in 2" :key="item">
+				<image class="img" src="../../static/logo.png" mode=""></image>
+				<view class="text">
+					<view class="">扁鹊</view>
+					<view class="">我是扁鹊，我输出萨伏阿海还是覅和哈市啊hi收到</view>
+				</view>
+			</view>
 		</view>
 	</view>
 </template>
@@ -15,54 +40,82 @@
 	export default {
 		data() {
 			return {
-				Detail:[]
+				Detail:[],
+				list: [
+					{
+						image:'https://cdn.uviewui.com/uview/swiper/swiper1.png',
+						title:'1'
+					},
+					{
+						image:'https://cdn.uviewui.com/uview/swiper/swiper2.png',
+						title:'2'
+					},
+					{
+						image:'https://cdn.uviewui.com/uview/swiper/swiper3.png',
+						title:'3'
+					}
+				]
 			}
 		},
 		onLoad() {
-		this.getMedicineDetail()
+	
 		},
 		methods: {
-			async gettest(){
-				const db = uniCloud.database()
-				const name = await db.collection('test').get().then(res => {
-					console.log(res);
-				}).catch(e => {
-					console.log(e);
+			goSearch(){
+				uni.navigateTo({
+					url:'/pages/search/search'
 				})
-			},
-			async getMedicineDetail(){
-				const db = uniCloud.database();
-				const res = await db.collection('medicine-detail').get()
-				this.Detail = res.result.data
 			}
 		}
 	}
 </script>
 
-<style>
-	.content {
+<style scoped lang="scss">
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	.search{
+		margin: 15rpx 0;
+	}
+	.swiper{
+		margin-bottom: 15rpx;
+	}
+	.famous-doctor{
+		.doctor{
+			margin-bottom: 20rpx;
+			display: flex;
+			justify-content: center;
+			.img{
+				width: 200rpx;
+				height: 300rpx;
+				object-fit: contain;
+			}
+			.text{
+				width: 400rpx;
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-end;
+				align-items: flex-start;
+			}
+		}
+	}
+	.physical-therapy{
 		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.logo {
-		height: 200rpx;
-		width: 200rpx;
-		margin-top: 200rpx;
-		margin-left: auto;
-		margin-right: auto;
-		margin-bottom: 50rpx;
-	}
-
-	.text-area {
-		display: flex;
-		justify-content: center;
-	}
-
-	.title {
-		font-size: 36rpx;
-		color: #8f8f94;
+		flex-wrap: wrap;
+		justify-content: space-around;
+		.therapy{
+			width: 100rpx;
+			display: flex;
+			flex-direction: column;
+			margin: 20rpx;
+			.img{
+				width: 100rpx;
+				height: 100rpx;
+			}
+			.text{
+				text-align: center;
+			}
+		}
 	}
 </style>

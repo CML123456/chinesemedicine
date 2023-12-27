@@ -1,0 +1,1 @@
+<view><u-search vue-id="50cad900-1" shape="round" clearabled="{{true}}" focus="{{true}}" actionText="搜索" bind:__l="__l"></u-search></view>
