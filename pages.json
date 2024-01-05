@@ -36,6 +36,14 @@
 				"navigationBarTitleText": "",
 				"enablePullDownRefresh" : false
 			}
+		},
+		{
+			"path" : "pages/home/details/details",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"enablePullDownRefresh" : false
+			}
 		}
 	],
 	"globalStyle": {

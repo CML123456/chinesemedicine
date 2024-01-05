@@ -1,7 +1,7 @@
 <template>
 	<view class="">
 		<view class="search">
-			<u-search shape="round" :show-action="false" :disabled="true" @click="goSearch()"></u-search>
+			<u-search class="search-border" bgColor="#fff" shape="round" :show-action="false" :disabled="true" @click="goSearch()"></u-search>
 		</view>
 		<view class="swiper">
 			<u-swiper 

@@ -1,1 +1,1 @@
-<view><view>1</view></view>
+<view class="data-v-92bb8f34"><view class="people-new data-v-92bb8f34"><view class="avatar data-v-92bb8f34"><image class="img data-v-92bb8f34" src="../../static/logo.png" mode></image><view class="data-v-92bb8f34">奥特之父</view></view><view data-event-opts="{{[['tap',[['goEdit',['$event']]]]]}}" bindtap="__e" class="data-v-92bb8f34">编辑</view></view><view class="record data-v-92bb8f34">浏览记录</view></view>

@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<u-search shape="round" :clearabled="true" :focus="true" actionText="搜索" ></u-search>
+		<u-search shape="round" :clearabled="true" bgColor="#fff" :focus="true" actionText="搜索" ></u-search>
 	</view>
 </template>
 

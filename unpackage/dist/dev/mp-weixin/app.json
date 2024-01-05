@@ -4,7 +4,8 @@
     "pages/search/search",
     "pages/collection/collection",
     "pages/home/home",
-    "pages/classification/classification"
+    "pages/classification/classification",
+    "pages/home/details/details"
   ],
   "subPackages": [],
   "window": {
