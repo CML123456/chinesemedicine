@@ -56,7 +56,7 @@
   width: 100rpx;
   display: flex;
   flex-direction: column;
-  margin: 20rpx;
+  margin: 40rpx;
 }
 .physical-therapy .therapy .img.data-v-57280228 {
   width: 100rpx;

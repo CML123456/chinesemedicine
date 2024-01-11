@@ -35,7 +35,14 @@
 .list .text.data-v-57756884 {
   margin-left: 30rpx;
 }
-.list .img.data-v-57756884 {
+.list .button.data-v-57756884 {
+  display: inline-block;
+  width: auto;
+  height: auto;
+  border: none;
+  background-color: transparent;
+}
+.list .button .img.data-v-57756884 {
   width: 100rpx;
   height: 100rpx;
   border-radius: 100rpx;

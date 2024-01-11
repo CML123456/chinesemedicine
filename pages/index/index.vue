@@ -19,9 +19,9 @@
 			</u-swiper>
 		</view>
 		<view class="physical-therapy">
-			<view class="therapy" v-for="item in 10" :key="item">
-				<image src="../../static/logo.png" class="img" mode=""></image>
-				<view class="text">针灸</view>
+			<view class="therapy" v-for="item in technique" :key="item._id" @click="gotechnique(item)">
+				<image :src="'../../static/technique/' + item.logoID + '.png'" class="img" mode=""></image>
+				<view class="text">{{item.name}}</view>
 			</view>
 		</view>
 		<view class="famous-doctor">
@@ -53,8 +53,9 @@
 					{
 						image:'https://cdn.uviewui.com/uview/swiper/swiper3.png',
 						title:'3'
-					}
-				]
+					},
+				],
+				technique:[]
 			}
 		},
 		onLoad() {
@@ -65,7 +66,21 @@
 				uni.navigateTo({
 					url:'/pages/search/search'
 				})
+			},
+			async getTechniqueList(){
+				const db = uniCloud.database();
+				const res = await db.collection('technique').get()
+				this.technique = res.result.data
+			},
+			gotechnique(item){
+				const id = item._id
+				uni.navigateTo({
+					url:`./technique/technique?id=${id}`
+				})
 			}
+		},
+		onShow(){
+			this.getTechniqueList()
 		}
 	}
 </script>
@@ -108,7 +123,7 @@
 			width: 100rpx;
 			display: flex;
 			flex-direction: column;
-			margin: 20rpx;
+			margin: 40rpx;
 			.img{
 				width: 100rpx;
 				height: 100rpx;

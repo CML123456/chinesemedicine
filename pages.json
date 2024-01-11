@@ -44,6 +44,38 @@
 				"navigationBarTitleText" : "",
 				"enablePullDownRefresh" : false
 			}
+		},
+		{
+			"path" : "pages/home/login/login",
+			"style" : 
+			{
+				"navigationBarTitleText" : "登录",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/home/registered/registered",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/home/details/changgeNickname/changgeNickname",
+			"style" : 
+			{
+				"navigationBarTitleText" : "修改昵称",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/index/technique/technique",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"enablePullDownRefresh" : false
+			}
 		}
 	],
 	"globalStyle": {
@@ -54,28 +86,29 @@
 	},
 	"uniIdRouter": {},
 	"tabBar": {
+		"selectedColor":"#1296db",
 		"list": [
 			{
-				"iconPath": "",
-				"selectedIconPath": "",
+				"iconPath": "./static/tabbar/shouye.png",
+				"selectedIconPath": "./static/tabbar/shouye-copy.png",
 				"pagePath": "pages/index/index",
 				"text": "首页"
 			},
 			{
-				"iconPath": "",
-				"selectedIconPath": "",
+				"iconPath": "./static/tabbar/fenlei.png",
+				"selectedIconPath": "./static/tabbar/fenlei-copy.png",
 				"pagePath": "pages/classification/classification",
 				"text": "分类"
 			},
 			{
-				"iconPath": "",
-				"selectedIconPath": "",
+				"iconPath": "./static/tabbar/shoucang.png",
+				"selectedIconPath": "./static/tabbar/shoucang-copy.png",			
 				"pagePath": "pages/collection/collection",
 				"text": "收藏"
 			},
 			{
-				"iconPath": "",
-				"selectedIconPath": "",
+				"iconPath": "./static/tabbar/wode.png",
+				"selectedIconPath": "./static/tabbar/wode-copy.png",
 				"pagePath": "pages/home/home",
 				"text": "我的"
 			}

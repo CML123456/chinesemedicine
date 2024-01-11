@@ -1,0 +1,1 @@
+{"bsonType":"object","required":[],"permission":{"read":true,"create":true,"update":true,"delete":true},"properties":{"_id":{"description":"ID，系统自动生成"},"userId":{"title":"账号","bsonType":"string"},"nickname":{"title":"昵称","bsonType":"string"},"password":{"title":"昵称","bsonType":"string"},"avatar":{"title":"头像","bsonType":"string"}}}

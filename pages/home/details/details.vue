@@ -1,47 +1,72 @@
 <template>
 	<view>
-		<view class="list" v-for="item in information" :key="item">
-			<text class="text">{{item.displayName}}</text>
-			<image v-if="item.displayName === '头像'" :src="item.value" class="img" @click="chosseImage" mode=""></image>
-			<text class="text-right" v-else>{{item.value}}</text>
+		<view class="list">
+			<text class="text">头像</text>
+			<button class="button" open-type="chooseAvatar" @chooseavatar="chosseImage">
+			 <image :src="userInfo.avatar" class="img" mode=""></image>
+			</button> 
+		</view>
+		<view class="list">
+			<text class="text">账号</text>
+			<text class="text-right">{{userInfo.userId}}</text>
+		</view>
+		<view class="list" @click="changeNickname">
+			<text class="text">昵称</text>
+			<text class="text-right">{{userInfo.nickname}}</text>
 		</view>
 	</view>
 </template>
 
 <script>
+	import {setUserinfo} from '../../../util/Storage.js'
+	import {update,select} from '../../../util/operation.js'
 	export default {
 		data() {
 			return {
-				information:[
-					{
-						displayName:'头像',
-						value:'../../../static/logo.png'
-					},
-					{
-						displayName:'昵称：',
-						value:'奥特之父'
-					},
-					{
-						displayName:'手机号：',
-						value:'12345678910'
-					}
-				]
+				userInfo:{}
 			};
 		},
 		methods:{
-			chosseImage(){
-				uni.chooseImage({
-					count:1,
-					success:res => {
-						this.information.find(item => item.displayName === '头像').value = res.tempFilePaths?.[0]
+			chosseImage(e){
+					const { avatarUrl } = e.detail 
+					console.log(e);
+					this.userInfo.avatar = avatarUrl
+					const avatar = avatarUrl
+					const db = uniCloud.database()
+					const obj = {
+						avatar
 					}
+					// const userInfo = uni.getStorageSync('userInfo')
+					const userId = this.userInfo.userId
+					db.collection('user').where("userId == '" + userId + "'").update(obj)
+					// select('user',"userId == '" + userId + "'")
+					db.collection('user').where("userId == '" + userId + "'").get().then(res => {
+						 console.log(res);
+						 uni.setStorageSync('userInfo',res.result.data[0])
+					 })
+			},
+			getuserInfo(){
+				this.userInfo = uni.getStorageSync('userInfo')
+			},
+			changeNickname(){
+				const nickName = this.userInfo.nickname
+				const userId = this.userInfo.userId
+				uni.navigateTo({
+					url:`./changgeNickname/changgeNickname?nickName=${nickName}&&userId=${userId}`
 				})
 			}
+		},
+		onShow() {
+			this.getuserInfo()
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
+	*{
+		margin: 0;
+		padding: 0;
+	}
 .list{
 	display: flex;
 	justify-content: space-between;
@@ -52,12 +77,20 @@
 	.text{
 		margin-left: 30rpx;
 	}
-	.img{
-		width: 100rpx;
-		height: 100rpx;
-		border-radius: 100rpx;
-		margin-right: 30rpx;
+	.button{
+		display: inline-block;
+		  width: auto;
+		  height: auto;
+		border: none;
+		background-color: transparent;
+		.img{
+			width: 100rpx;
+			height: 100rpx;
+			border-radius: 100rpx;
+			margin-right: 30rpx;
+		}
 	}
+	
 	.text-right{
 		margin-right: 30rpx;
 	}

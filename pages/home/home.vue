@@ -2,8 +2,8 @@
 	<view>
 		<view class="people-new">
 			<view class="avatar">
-				<image src="../../static/logo.png" mode="" class="img"></image>
-				<view class="">奥特之父</view>
+				<image :src="avatarUrl" mode="" class="img"></image>
+				<view class="">{{nickname}}</view>
 			</view>
 			<view class="" @click="goEdit">编辑</view>
 		</view>
@@ -17,7 +17,8 @@
 	export default {
 		data() {
 			return {
-				
+				nickname:'',
+				avatarUrl:''
 			};
 		},
 		methods:{
@@ -25,7 +26,23 @@
 				uni.navigateTo({
 					url:'/pages/home/details/details'
 				})
+			},
+			getuserInfo(){
+				const userInfo = uni.getStorageSync('userInfo')
+				if(!userInfo) {
+					uni.navigateTo({
+						url:'./login/login'
+					})
+				}
+				this.nickname = userInfo.nickname
+				this.avatarUrl = userInfo.avatar
+				console.log(this.nickname);
 			}
+		},
+		onShow() {
+			this.getuserInfo()
+		},
+		onLaunch() {
 		}
 	}
 </script>
