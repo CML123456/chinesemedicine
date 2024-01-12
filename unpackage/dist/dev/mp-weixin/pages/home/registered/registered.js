@@ -138,10 +138,13 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uniCloud, uni) {
 
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 28));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 31));
 //
 //
 //
@@ -178,20 +181,41 @@ var _default = {
 
   methods: {
     registerer: function registerer() {
-      var userId = this.userId;
-      var nickname = this.nickName;
-      var password = this.userpassword;
-      var obj = {
-        userId: userId,
-        nickname: nickname,
-        password: password
-      };
-      var db = uniCloud.database();
-      var res = db.collection('user').add(obj);
-      // console.log(res);
-      uni.navigateTo({
-        url: '../login/login'
-      });
+      var _this = this;
+      return (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
+        var avatarUrl, avatar, userId, nickname, password, obj, db, res;
+        return _regenerator.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return uniCloud.getFileInfo({
+                  fileList: ['adb1485e-c711-4e21-805a-efa3719fe150']
+                });
+              case 2:
+                avatarUrl = _context.sent;
+                avatar = avatarUrl.fileList[0].url;
+                userId = _this.userId;
+                nickname = _this.nickName;
+                password = _this.userpassword;
+                obj = {
+                  userId: userId,
+                  nickname: nickname,
+                  password: password,
+                  avatar: avatar
+                };
+                db = uniCloud.database();
+                res = db.collection('user').add(obj); // console.log(res);
+                uni.navigateTo({
+                  url: '../login/login'
+                });
+              case 11:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
     }
   }
 };

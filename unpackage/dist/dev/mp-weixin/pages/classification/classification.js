@@ -136,12 +136,15 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+/* WEBPACK VAR INJECTION */(function(uniCloud) {
 
-
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 28));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 31));
 var _vue = __webpack_require__(/*! vue */ 25);
 //
 //
@@ -165,69 +168,10 @@ var _default = {
   data: function data() {
     return {
       rightClassfication: {},
-      show: [{
-        name: 1,
-        isShow: true,
-        classfication: [{
-          name: '清热药',
-          detailsCategory: [{
-            id: 1,
-            name: '清虚热药'
-          }, {
-            id: 2,
-            name: '哈哈哈哈'
-          }]
-        }, {
-          name: '养神',
-          detailsCategory: [{
-            id: 1,
-            name: '清虚热药'
-          }, {
-            id: 2,
-            name: '哈哈哈哈'
-          }]
-        }]
-      }, {
-        name: 2,
-        isShow: false,
-        classfication: [{
-          name: '清药',
-          detailsCategory: [{
-            id: 1,
-            name: '清虚热药'
-          }, {
-            id: 2,
-            name: '哈哈哈哈'
-          }, {
-            id: 1,
-            name: '清虚热药'
-          }, {
-            id: 2,
-            name: '哈哈哈哈'
-          }, {
-            id: 1,
-            name: '清虚热药'
-          }, {
-            id: 2,
-            name: '哈哈哈哈'
-          }]
-        }, {
-          name: '养神',
-          detailsCategory: [{
-            id: 1,
-            name: '清虚热药'
-          }, {
-            id: 2,
-            name: '哈哈哈哈'
-          }]
-        }]
-      }]
+      show: []
     };
   },
-  onLoad: function onLoad() {
-    console.log(this.show[1]);
-    this.rightClassfication = this.show[0].classfication;
-  },
+  onLoad: function onLoad() {},
   methods: {
     showClassfication: function showClassfication(item) {
       if (item.isShow) return;
@@ -235,12 +179,50 @@ var _default = {
         return item.isShow = false;
       });
       item.isShow = !item.isShow;
-      this.rightClassfication = item.classfication;
+      console.log(item);
+      if (item.id._value === '1') {
+        this.rightClassfication = item.id.classificationtwogongxiao;
+      } else if (item.id._value === '2') {
+        this.rightClassfication = item.id.classificationtwoguijing;
+      } else if (item.id._value === '3') {
+        this.rightClassfication = item.id.classificationtwoyaoxing;
+      } else if (item.id._value === '4') {
+        this.rightClassfication = item.id.classificationtwoyaowei;
+      } else if (item.id._value === '5') {
+        this.rightClassfication = item.id.classificationtwobuwei;
+      }
+    },
+    getclassificationList: function getclassificationList() {
+      var _this = this;
+      return (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
+        var db, res;
+        return _regenerator.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                db = uniCloud.database();
+                _context.next = 3;
+                return db.collection('classification-one,classificationtwogongxiao,classificationtwoguijing,classificationtwoyaoxing,classificationtwoyaowei,classificationtwobuwei').get();
+              case 3:
+                res = _context.sent;
+                console.log(res);
+                _this.show = res.result.data;
+                _this.rightClassfication = _this.show[0].id.classificationtwogongxiao;
+              case 7:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
     }
   },
-  computed: {}
+  onShow: function onShow() {
+    this.getclassificationList();
+  }
 };
 exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 27)["default"]))
 
 /***/ }),
 

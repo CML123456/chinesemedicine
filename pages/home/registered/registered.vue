@@ -30,14 +30,19 @@
 			};
 		},
 		methods:{
-			registerer(){
+			async registerer(){
+				const avatarUrl = await uniCloud.getFileInfo({
+					fileList:['adb1485e-c711-4e21-805a-efa3719fe150']
+				})
+				const avatar = avatarUrl.fileList[0].url
 				const userId = this.userId
 				const nickname = this.nickName
 				const password = this.userpassword
 				const obj ={
 					userId,
 					nickname,
-					password
+					password,
+					avatar
 				}
 				const db = uniCloud.database()
 				const res = db.collection('user').add(obj)

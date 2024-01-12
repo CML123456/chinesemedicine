@@ -157,6 +157,9 @@ exports.default = void 0;
 //
 //
 //
+//
+//
+//
 var _default = {
   data: function data() {
     return {
@@ -173,13 +176,24 @@ var _default = {
     getuserInfo: function getuserInfo() {
       var userInfo = uni.getStorageSync('userInfo');
       if (!userInfo) {
-        uni.navigateTo({
+        uni.redirectTo({
           url: './login/login'
         });
       }
       this.nickname = userInfo.nickname;
+      console.log(userInfo.avatar);
       this.avatarUrl = userInfo.avatar;
-      console.log(this.nickname);
+    },
+    exitLogin: function exitLogin() {
+      uni.showModal({
+        content: "确认退出登录",
+        success: function success() {
+          uni.removeStorageSync('userInfo');
+          uni.switchTab({
+            url: '../../pages/index/index'
+          });
+        }
+      });
     }
   },
   onShow: function onShow() {

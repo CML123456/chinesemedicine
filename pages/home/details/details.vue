@@ -27,7 +27,7 @@
 			};
 		},
 		methods:{
-			chosseImage(e){
+			async chosseImage(e){
 					const { avatarUrl } = e.detail 
 					console.log(e);
 					this.userInfo.avatar = avatarUrl
@@ -38,7 +38,7 @@
 					}
 					// const userInfo = uni.getStorageSync('userInfo')
 					const userId = this.userInfo.userId
-					db.collection('user').where("userId == '" + userId + "'").update(obj)
+					await db.collection('user').where("userId == '" + userId + "'").update(obj)
 					// select('user',"userId == '" + userId + "'")
 					db.collection('user').where("userId == '" + userId + "'").get().then(res => {
 						 console.log(res);
@@ -54,11 +54,13 @@
 				uni.navigateTo({
 					url:`./changgeNickname/changgeNickname?nickName=${nickName}&&userId=${userId}`
 				})
-			}
+			},
+			//未登录的时候提示前往首页
 		},
 		onShow() {
 			this.getuserInfo()
-		}
+		},
+
 	}
 </script>
 

@@ -25,11 +25,11 @@
 			</view>
 		</view>
 		<view class="famous-doctor">
-			<view class="doctor" v-for="item in 2" :key="item">
-				<image class="img" src="../../static/logo.png" mode=""></image>
+			<view class="doctor" v-for="item in doctorList" :key="item._id" @click="goDoctor(item._id)">
+				<image class="img" :src="item.imgUrl" mode=""></image>
 				<view class="text">
-					<view class="">扁鹊</view>
-					<view class="">我是扁鹊，我输出萨伏阿海还是覅和哈市啊hi收到</view>
+					<view class="">{{item.name}}</view>
+					<view class="overflow">{{item.introduced}}</view>
 				</view>
 			</view>
 		</view>
@@ -55,7 +55,8 @@
 						title:'3'
 					},
 				],
-				technique:[]
+				technique:[],
+				doctorList:[]
 			}
 		},
 		onLoad() {
@@ -77,10 +78,29 @@
 				uni.navigateTo({
 					url:`./technique/technique?id=${id}`
 				})
+			},
+			async getDoctorList(){
+				const db = uniCloud.database();
+				const res = await db.collection('historical-doctor').get() 
+				const doctorList = await Promise.all(res.result.data.map(async item => {
+				const imgUrl = await uniCloud.getFileInfo({
+						fileList:[item.imgID]
+					})
+				item.imgUrl = imgUrl.fileList[0].url
+				return item
+				}))
+				this.doctorList = doctorList
+				
+			},
+			goDoctor(id){
+				uni.navigateTo({
+					url:`./doctorDetail/doctorDetail?id=${id}`
+				})
 			}
 		},
 		onShow(){
 			this.getTechniqueList()
+			this.getDoctorList()
 		}
 	}
 </script>
@@ -112,6 +132,13 @@
 				flex-direction: column;
 				justify-content: flex-end;
 				align-items: flex-start;
+				.overflow{
+					   display: -webkit-box; /* 设置为弹性盒子布局 */
+					   -webkit-line-clamp: 3; /* 显示的行数 */
+					   -webkit-box-orient: vertical; /* 设置垂直方向排列 */
+					   overflow: hidden; /* 超出部分隐藏 */
+					   text-overflow: ellipsis; /* 显示省略号 */
+				}
 			}
 		}
 	}

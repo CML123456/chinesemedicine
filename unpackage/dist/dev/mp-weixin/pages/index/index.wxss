@@ -47,6 +47,18 @@
   justify-content: flex-end;
   align-items: flex-start;
 }
+.famous-doctor .doctor .text .overflow.data-v-57280228 {
+  display: -webkit-box;
+  /* 设置为弹性盒子布局 */
+  -webkit-line-clamp: 3;
+  /* 显示的行数 */
+  -webkit-box-orient: vertical;
+  /* 设置垂直方向排列 */
+  overflow: hidden;
+  /* 超出部分隐藏 */
+  text-overflow: ellipsis;
+  /* 显示省略号 */
+}
 .physical-therapy.data-v-57280228 {
   display: flex;
   flex-wrap: wrap;

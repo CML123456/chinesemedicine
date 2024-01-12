@@ -190,8 +190,26 @@ var _default = {
       uni.navigateTo({
         url: '../registered/registered'
       });
+    },
+    showgoindex: function showgoindex() {
+      var userinfo = uni.getStorageSync('userInfo');
+      console.log(22);
+      if (!userinfo) {
+        uni.showModal({
+          content: "未登录，将返回首页？",
+          cancelText: "继续登录",
+          confirmText: "确认",
+          success: function success() {
+            console.log(1);
+            uni.navigateBack({
+              url: '../../index/idex.vue'
+            });
+          }
+        });
+      }
     }
-  }
+  },
+  onUnload: function onUnload() {}
 };
 exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 27)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))

@@ -9,6 +9,5 @@
 // 详细JQL语法，请参考：https://uniapp.dcloud.net.cn/uniCloud/jql.html
 
 // 下面示例查询uni-id-users表的所有数据
-const userId = '123';
-db.collection('user').where("userId == '" + userId + "'").get();
+db.collection('classification-one,classification-two-gongxiao,classification-two-guijing').get()
 

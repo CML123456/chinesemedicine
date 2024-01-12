@@ -138,10 +138,13 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uniCloud, uni) {
 
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 28));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 31));
 var _Storage = __webpack_require__(/*! ../../../util/Storage.js */ 212);
 var _operation = __webpack_require__(/*! ../../../util/operation.js */ 213);
 //
@@ -171,22 +174,37 @@ var _default = {
   },
   methods: {
     chosseImage: function chosseImage(e) {
-      var avatarUrl = e.detail.avatarUrl;
-      console.log(e);
-      this.userInfo.avatar = avatarUrl;
-      var avatar = avatarUrl;
-      var db = uniCloud.database();
-      var obj = {
-        avatar: avatar
-      };
-      // const userInfo = uni.getStorageSync('userInfo')
-      var userId = this.userInfo.userId;
-      db.collection('user').where("userId == '" + userId + "'").update(obj);
-      // select('user',"userId == '" + userId + "'")
-      db.collection('user').where("userId == '" + userId + "'").get().then(function (res) {
-        console.log(res);
-        uni.setStorageSync('userInfo', res.result.data[0]);
-      });
+      var _this = this;
+      return (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
+        var avatarUrl, avatar, db, obj, userId;
+        return _regenerator.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                avatarUrl = e.detail.avatarUrl;
+                console.log(e);
+                _this.userInfo.avatar = avatarUrl;
+                avatar = avatarUrl;
+                db = uniCloud.database();
+                obj = {
+                  avatar: avatar
+                }; // const userInfo = uni.getStorageSync('userInfo')
+                userId = _this.userInfo.userId;
+                _context.next = 9;
+                return db.collection('user').where("userId == '" + userId + "'").update(obj);
+              case 9:
+                // select('user',"userId == '" + userId + "'")
+                db.collection('user').where("userId == '" + userId + "'").get().then(function (res) {
+                  console.log(res);
+                  uni.setStorageSync('userInfo', res.result.data[0]);
+                });
+              case 10:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
     },
     getuserInfo: function getuserInfo() {
       this.userInfo = uni.getStorageSync('userInfo');
@@ -197,7 +215,7 @@ var _default = {
       uni.navigateTo({
         url: "./changgeNickname/changgeNickname?nickName=".concat(nickName, "&&userId=").concat(userId)
       });
-    }
+    } //未登录的时候提示前往首页
   },
   onShow: function onShow() {
     this.getuserInfo();

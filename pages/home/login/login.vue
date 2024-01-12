@@ -47,8 +47,27 @@
 				uni.navigateTo({
 					url:'../registered/registered'
 				})
+			},
+			showgoindex(){
+				const userinfo = uni.getStorageSync('userInfo')
+				console.log(22);
+				if(!userinfo) {
+				uni.showModal({
+					content:"未登录，将返回首页？",
+					cancelText:"继续登录",
+					confirmText:"确认",
+					success() {
+						console.log(1);
+					uni.navigateBack({					
+						url:'../../index/idex.vue'
+					})
+					}
+				})
+				}
 			}
-		}
+		},
+		onUnload() {
+		},
 	}
 </script>
 

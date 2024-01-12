@@ -1,0 +1,1 @@
+.login{display:flex;justify-content:center;margin-top:50rpx}.login .inp{border:1rpx solid #bfbfbf;height:60rpx}.forget{margin-top:20rpx;color:#0af;font-size:12px;display:flex;justify-content:space-around}.button-login{margin-top:50rpx;width:400rpx;height:60rpx;line-height:60rpx}

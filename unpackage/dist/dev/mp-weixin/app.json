@@ -9,7 +9,8 @@
     "pages/home/login/login",
     "pages/home/registered/registered",
     "pages/home/details/changgeNickname/changgeNickname",
-    "pages/index/technique/technique"
+    "pages/index/technique/technique",
+    "pages/index/doctorDetail/doctorDetail"
   ],
   "subPackages": [],
   "window": {

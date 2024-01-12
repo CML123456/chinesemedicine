@@ -4,7 +4,12 @@
     "pages/search/search",
     "pages/collection/collection",
     "pages/home/home",
-    "pages/classification/classification"
+    "pages/classification/classification",
+    "pages/home/details/details",
+    "pages/home/login/login",
+    "pages/home/registered/registered",
+    "pages/home/details/changgeNickname/changgeNickname",
+    "pages/index/technique/technique"
   ],
   "subPackages": [],
   "window": {
@@ -14,28 +19,29 @@
     "backgroundColor": "#F8F8F8"
   },
   "tabBar": {
+    "selectedColor": "#1296db",
     "list": [
       {
-        "iconPath": "",
-        "selectedIconPath": "",
+        "iconPath": "./static/tabbar/shouye.png",
+        "selectedIconPath": "./static/tabbar/shouye-copy.png",
         "pagePath": "pages/index/index",
         "text": "首页"
       },
       {
-        "iconPath": "",
-        "selectedIconPath": "",
+        "iconPath": "./static/tabbar/fenlei.png",
+        "selectedIconPath": "./static/tabbar/fenlei-copy.png",
         "pagePath": "pages/classification/classification",
         "text": "分类"
       },
       {
-        "iconPath": "",
-        "selectedIconPath": "",
+        "iconPath": "./static/tabbar/shoucang.png",
+        "selectedIconPath": "./static/tabbar/shoucang-copy.png",
         "pagePath": "pages/collection/collection",
         "text": "收藏"
       },
       {
-        "iconPath": "",
-        "selectedIconPath": "",
+        "iconPath": "./static/tabbar/wode.png",
+        "selectedIconPath": "./static/tabbar/wode-copy.png",
         "pagePath": "pages/home/home",
         "text": "我的"
       }

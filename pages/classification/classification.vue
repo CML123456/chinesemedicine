@@ -1,14 +1,14 @@
 <template>
 	<view class="classification">
 		<view class="list-title">			
-			<view :class="item.isShow ? 'list-item list-show':'list-item'" v-for="item in show" :key="item" @click="showClassfication(item)">{{item.name}}</view>
+			<view :class="item.isShow ? 'list-item list-show':'list-item'" v-for="item in show" :key="item" @click="showClassfication(item)">{{item. classification}}</view>
 		</view>
 		<view class="detail-classification">
 			<view class="detail-box" v-for="items in rightClassfication" :key="items">
 				<view class="detail-name">
-					{{items.name}}
+					{{items.classificationname}}
 				</view>
-				<view class="detail-content" v-for="item in items.detailsCategory" :key="item">
+				<view class="detail-content" v-for="item in items.children" :key="item">
 					{{item.name}}
 				</view>
 			</view>
@@ -22,102 +22,40 @@ import { vShow } from "vue"
 		data() {
 			return {
 				rightClassfication:{},
-				show:[
-					{
-						name:1,
-						isShow:true,
-						classfication:[
-							{
-								name:'清热药',
-								detailsCategory:[
-									{
-										id:1,
-										name:'清虚热药'
-									},
-									{
-										id:2,
-										name:'哈哈哈哈'
-									}
-								]
-							},
-							{
-								name:'养神',
-								detailsCategory:[
-									{
-										id:1,
-										name:'清虚热药'
-									},
-									{
-										id:2,
-										name:'哈哈哈哈'
-									}
-								]
-							}
-						]
-					},
-					{
-						name:2,
-						isShow:false,
-						classfication:[
-							{
-								name:'清药',
-								detailsCategory:[
-									{
-										id:1,
-										name:'清虚热药'
-									},
-									{
-										id:2,
-										name:'哈哈哈哈'
-									},{
-										id:1,
-										name:'清虚热药'
-									},
-									{
-										id:2,
-										name:'哈哈哈哈'
-									},{
-										id:1,
-										name:'清虚热药'
-									},
-									{
-										id:2,
-										name:'哈哈哈哈'
-									}
-								]
-							},
-							{
-								name:'养神',
-								detailsCategory:[
-									{
-										id:1,
-										name:'清虚热药'
-									},
-									{
-										id:2,
-										name:'哈哈哈哈'
-									}
-								]
-							}
-						]
-					}
-				]	
-			}
+				show:[]
+				}
 		},
 		onLoad() {
-			console.log(this.show[1]);
-				this.rightClassfication = this.show[0].classfication
 		},
 		methods: {
 			showClassfication(item){
 				if(item.isShow) return
 				this.show.forEach(item => item.isShow = false)
 				item.isShow = !item.isShow
-				this.rightClassfication = item.classfication
+				console.log(item);
+				if(item.id._value === '1'){
+					this.rightClassfication = item.id.classificationtwogongxiao	
+				}else if(item.id._value === '2'){
+					this.rightClassfication = item.id.classificationtwoguijing
+				}else if(item.id._value === '3'){
+					this.rightClassfication = item.id.classificationtwoyaoxing
+				}else if(item.id._value === '4'){
+					this.rightClassfication = item.id.classificationtwoyaowei
+				}else if(item.id._value === '5'){
+					this.rightClassfication = item.id.classificationtwobuwei
+				}
+			},
+			async getclassificationList(){
+				const db = uniCloud.database();
+				const res = await db.collection('classification-one,classificationtwogongxiao,classificationtwoguijing,classificationtwoyaoxing,classificationtwoyaowei,classificationtwobuwei').get()
+				console.log(res);
+				this.show = res.result.data
+				this.rightClassfication = this.show[0].id.classificationtwogongxiao	
 			}
 		},
-		computed:{
-		}
+		onShow() {
+			this.getclassificationList()
+			}
 }
 </script>
 

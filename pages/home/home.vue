@@ -10,6 +10,9 @@
 		<view class="record">
 			浏览记录
 		</view>
+		<view class="record" @click="exitLogin">
+			退出登录
+		</view>
 	</view>
 </template>
 
@@ -30,13 +33,24 @@
 			getuserInfo(){
 				const userInfo = uni.getStorageSync('userInfo')
 				if(!userInfo) {
-					uni.navigateTo({
+					uni.redirectTo({
 						url:'./login/login'
 					})
 				}
 				this.nickname = userInfo.nickname
+				console.log(userInfo.avatar);
 				this.avatarUrl = userInfo.avatar
-				console.log(this.nickname);
+			},
+			exitLogin(){
+				uni.showModal({
+					content:"确认退出登录",
+					success() {
+						uni.removeStorageSync('userInfo')
+						uni.switchTab({
+							url:'../../pages/index/index'
+						})
+					}
+				})
 			}
 		},
 		onShow() {

@@ -102,10 +102,10 @@ var components
 try {
   components = {
     uSearch: function () {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-search/u-search */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-search/u-search")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-search/u-search.vue */ 238))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-search/u-search */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-search/u-search")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-search/u-search.vue */ 256))
     },
     uSwiper: function () {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-swiper/u-swiper */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-swiper/u-swiper")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-swiper/u-swiper.vue */ 246))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-swiper/u-swiper */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-swiper/u-swiper")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-swiper/u-swiper.vue */ 264))
     },
   }
 } catch (e) {
@@ -223,7 +223,8 @@ var _default = {
         image: 'https://cdn.uviewui.com/uview/swiper/swiper3.png',
         title: '3'
       }],
-      technique: []
+      technique: [],
+      doctorList: []
     };
   },
   onLoad: function onLoad() {},
@@ -260,10 +261,67 @@ var _default = {
       uni.navigateTo({
         url: "./technique/technique?id=".concat(id)
       });
+    },
+    getDoctorList: function getDoctorList() {
+      var _this2 = this;
+      return (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee3() {
+        var db, res, doctorList;
+        return _regenerator.default.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                db = uniCloud.database();
+                _context3.next = 3;
+                return db.collection('historical-doctor').get();
+              case 3:
+                res = _context3.sent;
+                _context3.next = 6;
+                return Promise.all(res.result.data.map( /*#__PURE__*/function () {
+                  var _ref = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee2(item) {
+                    var imgUrl;
+                    return _regenerator.default.wrap(function _callee2$(_context2) {
+                      while (1) {
+                        switch (_context2.prev = _context2.next) {
+                          case 0:
+                            _context2.next = 2;
+                            return uniCloud.getFileInfo({
+                              fileList: [item.imgID]
+                            });
+                          case 2:
+                            imgUrl = _context2.sent;
+                            item.imgUrl = imgUrl.fileList[0].url;
+                            return _context2.abrupt("return", item);
+                          case 5:
+                          case "end":
+                            return _context2.stop();
+                        }
+                      }
+                    }, _callee2);
+                  }));
+                  return function (_x) {
+                    return _ref.apply(this, arguments);
+                  };
+                }()));
+              case 6:
+                doctorList = _context3.sent;
+                _this2.doctorList = doctorList;
+              case 8:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
+      }))();
+    },
+    goDoctor: function goDoctor(id) {
+      uni.navigateTo({
+        url: "./doctorDetail/doctorDetail?id=".concat(id)
+      });
     }
   },
   onShow: function onShow() {
     this.getTechniqueList();
+    this.getDoctorList();
   }
 };
 exports.default = _default;

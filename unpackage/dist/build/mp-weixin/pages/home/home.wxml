@@ -1,1 +1,1 @@
-<view><view>1</view></view>
+<view class="data-v-ab08b9aa"><view class="people-new data-v-ab08b9aa"><view class="avatar data-v-ab08b9aa"><image class="img data-v-ab08b9aa" src="{{avatarUrl}}" mode></image><view class="data-v-ab08b9aa">{{nickname}}</view></view><view data-event-opts="{{[['tap',[['goEdit',['$event']]]]]}}" bindtap="__e" class="data-v-ab08b9aa">编辑</view></view><view class="record data-v-ab08b9aa">浏览记录</view></view>
