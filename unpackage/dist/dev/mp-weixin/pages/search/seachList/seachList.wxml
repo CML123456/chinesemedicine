@@ -1,0 +1,1 @@
+<view><view><u-search vue-id="029e6aff-1" shape="round" clearabled="{{true}}" bgColor="#fff" focus="{{true}}" actionText="搜索" bind:__l="__l"></u-search></view><detail class="{{[$root.g0===1?'left':'']}}" vue-id="029e6aff-2" list="{{list}}" bind:__l="__l"></detail></view>

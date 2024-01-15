@@ -4,18 +4,14 @@
 			<checkbox :checked="selectAll" @click="selectAllchange(selectAll)"><text>全选</text></checkbox>
 			<view class=""><button class="delete" :disabled="!deteleuse" @click="deleteCollection">取消收藏</button></view>
 		</view>
-		<view>
-			<checkbox v-for="item in checkboxs" :key="item.id" class="checkbox" :value="item.id" :checked="item.status" @click="checkboxchange(item)">
+		<checkbox class="checkbox" v-for="item in checkboxs" @click="checkboxchange(item)" :key="item._id" :checked="item.status">
 				<view class="collection">
-					<image :src="item.imgUrl" class="image"mode=""></image>
+					<image :src="item.imgUrl" class="image" mode=""></image>
 					<view class="collection-text">
 						<view class="">{{item.name}}</view>
-						<view class="">11212312</view>
-						<view class="">1234123</view>
 					</view>
 				</view>
-			</checkbox>
-		</view> 
+		</checkbox>
 	</view>
 </template>
 
@@ -24,31 +20,36 @@
 		data() {
 			return {
 				 selectedOptions: [],
-				 checkboxs:[
-					 {
-						 id:1,
-						 imgUrl:'../../static/logo.png',
-						 name:'哈哈',
-						 status:true
-					 },
-					 {
-					 	id:2,
-					 	imgUrl:'../../static/logo.png',
-					 	name:'哈哈哈',
-						status:true
-					 }
-				 ]
+				 checkboxs:[]
 			}
 		},
 		methods:{
 			checkboxchange(item){
+				console.log(item);
+				console.log(item.status);
 				item.status = !item.status
+				
 			},
 			selectAllchange(selectAll){
 				this.checkboxs.forEach(item => item.status = !selectAll)
 			},
-			deleteCollection(){
+			async deleteCollection(){
+				const userId = uni.getStorageSync('userInfo').userId
 				this.checkboxs = this.checkboxs.filter(item => !item.status)
+				const db = uniCloud.database();
+				const obj = {
+					medicineDetails:this.checkboxs
+				}
+			   const res = await db.collection('collection').where("user_id=='"+ userId+"'").update(obj);	
+			    
+			},
+			async getCollectionList(){
+				const userId = uni.getStorageSync('userInfo').userId
+				// console.log(userId);
+				const db = uniCloud.database();
+				const res = await db.collection('collection').where("user_id=='"+userId+"'").get()
+				this.checkboxs = res.result.data[0].medicineDetails
+				console.log(this.checkboxs);
 			}
 		},
 		computed:{
@@ -58,6 +59,9 @@
 			deteleuse: function(){
 				return this.checkboxs.some(item => item.status)
 			}
+		},
+		onShow() {
+			this.getCollectionList()
 		}
 	}
 </script>
@@ -82,6 +86,7 @@
 			}
 		}
 	}
+	
 	.selectAll{
 		display: flex;
 		justify-content: space-between;

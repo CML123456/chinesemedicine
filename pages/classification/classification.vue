@@ -8,7 +8,7 @@
 				<view class="detail-name">
 					{{items.classificationname}}
 				</view>
-				<view class="detail-content" v-for="item in items.children" :key="item">
+				<view class="detail-content" v-for="item in items.children" @click="goDetail(item)" :key="item">
 					{{item.name}}
 				</view>
 			</view>
@@ -48,10 +48,23 @@ import { vShow } from "vue"
 			async getclassificationList(){
 				const db = uniCloud.database();
 				const res = await db.collection('classification-one,classificationtwogongxiao,classificationtwoguijing,classificationtwoyaoxing,classificationtwoyaowei,classificationtwobuwei').get()
-				console.log(res);
 				this.show = res.result.data
 				this.rightClassfication = this.show[0].id.classificationtwogongxiao	
+			},
+			goDetail(item){
+				const name = item.name
+				if(item.status === 1){
+					uni.navigateTo({
+						url:`../medicineDetails/medicineDetails?name=${name}`
+					})
+				}
+				if(item.status === 0){
+					uni.navigateTo({
+						url:`/pages/search/seachList/seachList?name=${name}&&status=${item.status}`
+					})
+				}
 			}
+			
 		},
 		onShow() {
 			this.getclassificationList()

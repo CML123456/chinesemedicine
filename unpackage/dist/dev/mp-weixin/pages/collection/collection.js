@@ -136,16 +136,15 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+/* WEBPACK VAR INJECTION */(function(uni, uniCloud) {
 
-
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-//
-//
-//
-//
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 28));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 31));
 //
 //
 //
@@ -167,21 +166,13 @@ var _default = {
   data: function data() {
     return {
       selectedOptions: [],
-      checkboxs: [{
-        id: 1,
-        imgUrl: '../../static/logo.png',
-        name: '哈哈',
-        status: true
-      }, {
-        id: 2,
-        imgUrl: '../../static/logo.png',
-        name: '哈哈哈',
-        status: true
-      }]
+      checkboxs: []
     };
   },
   methods: {
     checkboxchange: function checkboxchange(item) {
+      console.log(item);
+      console.log(item.status);
       item.status = !item.status;
     },
     selectAllchange: function selectAllchange(selectAll) {
@@ -190,9 +181,56 @@ var _default = {
       });
     },
     deleteCollection: function deleteCollection() {
-      this.checkboxs = this.checkboxs.filter(function (item) {
-        return !item.status;
-      });
+      var _this = this;
+      return (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
+        var userId, db, obj, res;
+        return _regenerator.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                userId = uni.getStorageSync('userInfo').userId;
+                _this.checkboxs = _this.checkboxs.filter(function (item) {
+                  return !item.status;
+                });
+                db = uniCloud.database();
+                obj = {
+                  medicineDetails: _this.checkboxs
+                };
+                _context.next = 6;
+                return db.collection('collection').where("user_id=='" + userId + "'").update(obj);
+              case 6:
+                res = _context.sent;
+              case 7:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    },
+    getCollectionList: function getCollectionList() {
+      var _this2 = this;
+      return (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee2() {
+        var userId, db, res;
+        return _regenerator.default.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                userId = uni.getStorageSync('userInfo').userId; // console.log(userId);
+                db = uniCloud.database();
+                _context2.next = 4;
+                return db.collection('collection').where("user_id=='" + userId + "'").get();
+              case 4:
+                res = _context2.sent;
+                _this2.checkboxs = res.result.data[0].medicineDetails;
+                console.log(_this2.checkboxs);
+              case 7:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
     }
   },
   computed: {
@@ -206,9 +244,13 @@ var _default = {
         return item.status;
       });
     }
+  },
+  onShow: function onShow() {
+    this.getCollectionList();
   }
 };
 exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 27)["default"]))
 
 /***/ }),
 

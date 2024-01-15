@@ -21,17 +21,7 @@
   "libVersion": "3.3.1",
   "appid": "wx616bd6ef10731d1b",
   "projectname": "chinese-herbal-medicine",
-  "condition": {
-    "miniprogram": {
-      "list": [
-        {
-          "name": "pages/index/doctorDetail/doctorDetail",
-          "pathName": "pages/index/doctorDetail/doctorDetail",
-          "query": ""
-        }
-      ]
-    }
-  },
+  "condition": {},
   "editorSetting": {
     "tabIndent": "insertSpaces",
     "tabSize": 2

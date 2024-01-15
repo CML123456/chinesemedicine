@@ -136,7 +136,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uniCloud) {
+/* WEBPACK VAR INJECTION */(function(uniCloud, uni) {
 
 var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
 Object.defineProperty(exports, "__esModule", {
@@ -205,16 +205,28 @@ var _default = {
                 return db.collection('classification-one,classificationtwogongxiao,classificationtwoguijing,classificationtwoyaoxing,classificationtwoyaowei,classificationtwobuwei').get();
               case 3:
                 res = _context.sent;
-                console.log(res);
                 _this.show = res.result.data;
                 _this.rightClassfication = _this.show[0].id.classificationtwogongxiao;
-              case 7:
+              case 6:
               case "end":
                 return _context.stop();
             }
           }
         }, _callee);
       }))();
+    },
+    goDetail: function goDetail(item) {
+      var name = item.name;
+      if (item.status === 1) {
+        uni.navigateTo({
+          url: "../medicineDetails/medicineDetails?name=".concat(name)
+        });
+      }
+      if (item.status === 0) {
+        uni.navigateTo({
+          url: "/pages/search/seachList/seachList?name=".concat(name, "&&status=").concat(item.status)
+        });
+      }
     }
   },
   onShow: function onShow() {
@@ -222,7 +234,7 @@ var _default = {
   }
 };
 exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 27)["default"]))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 27)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
 
