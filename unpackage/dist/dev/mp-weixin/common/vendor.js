@@ -1557,7 +1557,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"chinese-herbal-medicine","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"chinese-herbal-medicine","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -8934,7 +8934,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"chinese-herbal-medicine","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"chinese-herbal-medicine","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -8955,14 +8955,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"chinese-herbal-medicine","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"chinese-herbal-medicine","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"chinese-herbal-medicine","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"chinese-herbal-medicine","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -9058,7 +9058,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"NODE_ENV":"development","VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"chinese-herbal-medicine","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"chinese-herbal-medicine","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -27518,7 +27518,9 @@ exports.add = add;
 /* 280 */,
 /* 281 */,
 /* 282 */,
-/* 283 */
+/* 283 */,
+/* 284 */,
+/* 285 */
 /*!****************************************************************************************************!*\
   !*** C:/Users/admin/Desktop/cml/chinesemedicine/uni_modules/uview-ui/components/u-search/props.js ***!
   \****************************************************************************************************/
@@ -27654,14 +27656,14 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 284 */,
-/* 285 */,
 /* 286 */,
 /* 287 */,
 /* 288 */,
 /* 289 */,
 /* 290 */,
-/* 291 */
+/* 291 */,
+/* 292 */,
+/* 293 */
 /*!****************************************************************************************************!*\
   !*** C:/Users/admin/Desktop/cml/chinesemedicine/uni_modules/uview-ui/components/u-swiper/props.js ***!
   \****************************************************************************************************/
@@ -27804,14 +27806,14 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 292 */,
-/* 293 */,
 /* 294 */,
 /* 295 */,
 /* 296 */,
 /* 297 */,
 /* 298 */,
-/* 299 */
+/* 299 */,
+/* 300 */,
+/* 301 */
 /*!***************************************************************************************************!*\
   !*** C:/Users/admin/Desktop/cml/chinesemedicine/uni_modules/uview-ui/components/u-input/props.js ***!
   \***************************************************************************************************/
@@ -28016,12 +28018,12 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 300 */,
-/* 301 */,
 /* 302 */,
 /* 303 */,
 /* 304 */,
-/* 305 */
+/* 305 */,
+/* 306 */,
+/* 307 */
 /*!********************************************************************************************!*\
   !*** C:/Users/admin/Desktop/cml/chinesemedicine/uni_modules/uview-ui/libs/mixin/button.js ***!
   \********************************************************************************************/
@@ -28051,7 +28053,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 306 */
+/* 308 */
 /*!**********************************************************************************************!*\
   !*** C:/Users/admin/Desktop/cml/chinesemedicine/uni_modules/uview-ui/libs/mixin/openType.js ***!
   \**********************************************************************************************/
@@ -28093,7 +28095,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 307 */
+/* 309 */
 /*!****************************************************************************************************!*\
   !*** C:/Users/admin/Desktop/cml/chinesemedicine/uni_modules/uview-ui/components/u-button/props.js ***!
   \****************************************************************************************************/
@@ -28272,14 +28274,14 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 308 */,
-/* 309 */,
 /* 310 */,
 /* 311 */,
 /* 312 */,
 /* 313 */,
 /* 314 */,
-/* 315 */
+/* 315 */,
+/* 316 */,
+/* 317 */
 /*!******************************************************************************************************!*\
   !*** C:/Users/admin/Desktop/cml/chinesemedicine/uni_modules/uview-ui/components/u-collapse/props.js ***!
   \******************************************************************************************************/
@@ -28316,14 +28318,14 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 316 */,
-/* 317 */,
 /* 318 */,
 /* 319 */,
 /* 320 */,
 /* 321 */,
 /* 322 */,
-/* 323 */
+/* 323 */,
+/* 324 */,
+/* 325 */
 /*!***********************************************************************************************************!*\
   !*** C:/Users/admin/Desktop/cml/chinesemedicine/uni_modules/uview-ui/components/u-collapse-item/props.js ***!
   \***********************************************************************************************************/
@@ -28400,14 +28402,14 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 324 */,
-/* 325 */,
 /* 326 */,
 /* 327 */,
 /* 328 */,
 /* 329 */,
 /* 330 */,
-/* 331 */
+/* 331 */,
+/* 332 */,
+/* 333 */
 /*!**************************************************************************************************!*\
   !*** C:/Users/admin/Desktop/cml/chinesemedicine/uni_modules/uview-ui/components/u-icon/icons.js ***!
   \**************************************************************************************************/
@@ -28638,7 +28640,7 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 332 */
+/* 334 */
 /*!**************************************************************************************************!*\
   !*** C:/Users/admin/Desktop/cml/chinesemedicine/uni_modules/uview-ui/components/u-icon/props.js ***!
   \**************************************************************************************************/
@@ -28745,14 +28747,14 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 333 */,
-/* 334 */,
 /* 335 */,
 /* 336 */,
 /* 337 */,
 /* 338 */,
 /* 339 */,
-/* 340 */
+/* 340 */,
+/* 341 */,
+/* 342 */
 /*!**********************************************************************************************************!*\
   !*** C:/Users/admin/Desktop/cml/chinesemedicine/uni_modules/uview-ui/components/u-loading-icon/props.js ***!
   \**********************************************************************************************************/
@@ -28829,14 +28831,14 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 341 */,
-/* 342 */,
 /* 343 */,
 /* 344 */,
 /* 345 */,
 /* 346 */,
 /* 347 */,
-/* 348 */
+/* 348 */,
+/* 349 */,
+/* 350 */
 /*!**************************************************************************************************************!*\
   !*** C:/Users/admin/Desktop/cml/chinesemedicine/uni_modules/uview-ui/components/u-swiper-indicator/props.js ***!
   \**************************************************************************************************************/
@@ -28883,8 +28885,6 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 349 */,
-/* 350 */,
 /* 351 */,
 /* 352 */,
 /* 353 */,
@@ -28897,7 +28897,9 @@ exports.default = _default;
 /* 360 */,
 /* 361 */,
 /* 362 */,
-/* 363 */
+/* 363 */,
+/* 364 */,
+/* 365 */
 /*!**************************************************************************************************!*\
   !*** C:/Users/admin/Desktop/cml/chinesemedicine/uni_modules/uview-ui/components/u-line/props.js ***!
   \**************************************************************************************************/
@@ -28948,14 +28950,14 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
 
 /***/ }),
-/* 364 */,
-/* 365 */,
 /* 366 */,
 /* 367 */,
 /* 368 */,
 /* 369 */,
 /* 370 */,
-/* 371 */
+/* 371 */,
+/* 372 */,
+/* 373 */
 /*!**************************************************************************************************!*\
   !*** C:/Users/admin/Desktop/cml/chinesemedicine/uni_modules/uview-ui/components/u-cell/props.js ***!
   \**************************************************************************************************/

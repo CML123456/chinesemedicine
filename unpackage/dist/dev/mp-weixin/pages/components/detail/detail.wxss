@@ -32,12 +32,12 @@
 .list .details.data-v-54b265e2 {
   background-color: #fff;
   margin-top: 20rpx;
-  width: 25vh;
+  width: 23vh;
   border-radius: 10rpx;
 }
 .list .details .img.data-v-54b265e2 {
-  width: 25vh;
-  height: 25vh;
+  width: 23vh;
+  height: 23vh;
 }
 .list .details .text.data-v-54b265e2 {
   font-size: 28rpx;

@@ -42,11 +42,11 @@
 	.details{
 		background-color: #fff;
 		margin-top: 20rpx;
-		width: 25vh;
+		width: 23vh;
 		border-radius: 10rpx;
 		.img{
-			width: 25vh;
-			height: 25vh;
+			width: 23vh;
+			height: 23vh;
 		}
 		.text{
 			font-size: 28rpx;

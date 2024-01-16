@@ -187,7 +187,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 277:
+/***/ 279:
 /*!**********************************************************************************************************!*\
   !*** C:/Users/admin/Desktop/cml/chinesemedicine/main.js?{"page":"pages%2Fcomponents%2Fdetail%2Fdetail"} ***!
   \**********************************************************************************************************/
@@ -209,5 +209,5 @@ createPage(_detail.default);
 
 /***/ })
 
-},[[277,"common/runtime","common/vendor"]]]);
+},[[279,"common/runtime","common/vendor"]]]);
 //# sourceMappingURL=../../../../.sourcemap/mp-weixin/pages/components/detail/detail.js.map

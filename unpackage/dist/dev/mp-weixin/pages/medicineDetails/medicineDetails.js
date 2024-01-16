@@ -102,13 +102,13 @@ var components
 try {
   components = {
     uCollapse: function () {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-collapse/u-collapse */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-collapse/u-collapse")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-collapse/u-collapse.vue */ 310))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-collapse/u-collapse */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-collapse/u-collapse")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-collapse/u-collapse.vue */ 312))
     },
     uCollapseItem: function () {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-collapse-item/u-collapse-item */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-collapse-item/u-collapse-item")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-collapse-item/u-collapse-item.vue */ 318))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-collapse-item/u-collapse-item */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-collapse-item/u-collapse-item")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-collapse-item/u-collapse-item.vue */ 320))
     },
     uButton: function () {
-      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-button/u-button */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-button/u-button")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-button/u-button.vue */ 300))
+      return Promise.all(/*! import() | uni_modules/uview-ui/components/u-button/u-button */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui/components/u-button/u-button")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui/components/u-button/u-button.vue */ 302))
     },
   }
 } catch (e) {
